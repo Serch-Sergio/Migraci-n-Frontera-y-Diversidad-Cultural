@@ -1,0 +1,301 @@
+<!doctype html> 
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Migración, Frontera y Diversidad Cultural — Sergio David Borrego Peraza</title>
+
+  <meta name="description" content="Proyecto visual: Migración, frontera y diversidad cultural en Ciudad Juárez. Documental fotográfico e ilustrado." />
+
+  <!-- ==================== ESTILOS DEL CÓDIGO 1 (NO SE MODIFICAN) ==================== -->
+  <style>
+    :root{
+      --bg:#f4f1e7;
+      --card:#fffdf8;
+      --accent:#e53e7d;
+      --cyan:#48c1e0;
+      --yellow:#f5d84c;
+      --blue:#3b82f6;
+      --muted:#374151;
+      --radius:14px;
+      --maxw:1100px;
+      font-family: 'Inter', system-ui, -apple-system, 'Helvetica Neue', Arial;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:#111827;
+      display:flex;
+      justify-content:center;
+      padding:32px 18px;
+    }
+    .stage{width:100%;max-width:var(--maxw);}
+
+    header{display:flex;gap:16px;align-items:center;margin-bottom:20px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:66px;height:66px;border-radius:12px;background:linear-gradient(135deg,var(--cyan),var(--yellow));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:20px}
+    h1{font-size:20px;margin:0;color:#111827}
+    .meta{color:var(--muted);font-size:13px}
+
+    .hero{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 8px 20px rgba(0,0,0,0.08);display:grid;grid-template-columns:1fr 380px;gap:18px;align-items:center}
+    @media (max-width:980px){.hero{grid-template-columns:1fr;}}
+
+    .video-wrap{background:#fff;padding:10px;border-radius:12px;display:flex;flex-direction:column;align-items:center;border:2px solid var(--cyan)}
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      width: 100%;
+      border-radius: 12px;
+      border: 2px solid var(--cyan);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 12px;
+    }
+
+    .video-caption{margin-top:8px;color:var(--muted);font-size:13px;text-align:center}
+
+    .summary{padding:12px}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--yellow);font-size:13px;color:#111827;margin-bottom:8px;font-weight:600}
+    .lead{font-size:15px;color:#1f2937;line-height:1.45}
+
+    section{margin-top:18px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:700px){.grid{grid-template-columns:1fr}}
+
+    .card{background:#fff;border-left:5px solid var(--accent);padding:12px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+    .label{color:var(--accent);font-size:13px;margin-bottom:6px;font-weight:600;text-transform:uppercase}
+    .ref-list{list-style:none;padding:0;margin:0}
+    .ref-list li{margin-bottom:6px;color:#374151;font-size:14px}
+
+    footer{margin-top:22px;color:var(--muted);font-size:13px;text-align:center}
+  </style>
+
+
+  <style>
+    .gallery-section {
+      margin-top: 60px;
+      padding: 20px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .gallery-section h2 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: #111827;
+    }
+
+    .gallery-section p {
+      max-width: 650px;
+      margin: 0 auto 35px auto;
+      font-size: 14px;
+      color: var(--muted);
+      text-align: justify;
+    }
+
+    .gx-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      justify-items: center;
+    }
+
+    .gx-card {
+      position: relative;
+      width: 220px;
+      height: 260px;
+      background-color: var(--card);
+      border-radius: 12px;
+      border: 2px solid var(--blue);
+      box-shadow: 0 4px 14px rgba(0, 80, 255, 0.30);
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .gx-card:hover {
+      filter: brightness(108%);
+    }
+
+    /* ===== CORRECCIÓN PRINCIPAL: IMÁGENES SIN ZOOM NI RECORTE ===== */
+    .gx-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .gx-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(255,255,255,0.95);
+      opacity: 0;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 12px;
+      transition: opacity 0.3s ease;
+    }
+
+    .gx-card:hover .gx-overlay {
+      opacity: 1;
+    }
+
+    .gx-overlay h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .gx-overlay p {
+      margin-top: 10px;
+      text-align: justify;
+      font-size: 13px;
+      color: #111;
+    }
+
+    @media (max-width: 768px) {
+      .gx-gallery { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .gx-gallery { grid-template-columns: 1fr; }
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="stage">
+
+    <!-- ==================== CÓDIGO 1 ORIGINAL COMPLETO ==================== -->
+    <header>
+      <div class="brand">
+        <div class="logo">SB</div>
+        <div>
+          <h1>Migración, Frontera y Diversidad Cultural</h1>
+          <div class="meta">217848 —  Proyecto de Narrativa Visual</div>
+        </div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div class="meta">Actividad E4. </div>
+        <div class="meta">Galería de evaluación 3</div>
+      </div>
+    </header> 
+
+    <div class="hero">
+      <div class="video-wrap">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/kXSiR7YaKCU?si=EAAXmkFSek5z_iJn"
+        allowfullscreen></iframe>
+
+        <div class="video-caption">
+          Reproduce el video para ver el pitch del proyecto.
+        </div>
+      </div>
+
+      <aside class="summary">
+        <div class="pill">Hipótesis visual</div>
+        <p class="lead">La identidad fronteriza se construye a partir del encuentro entre culturas. Retratar las huellas que los migrantes dejan en Ciudad Juárez revela cómo la mezcla de orígenes, lenguas y tradiciones conforma una nueva identidad colectiva.
+</p>
+
+        <div style="height:8px"></div>
+        <div class="card">
+          <div class="label">Intención visual</div>
+          <div>Visibilizar la riqueza cultural de la frontera mediante retrato fotográfico e ilustración; mostrar transformación urbana y sentido de pertenencia compartida.</div>
+        </div>
+
+        <div style="height:10px"></div>
+        <div class="card">
+          <div class="label">Referencia visual</div>
+          <ul class="ref-list">
+            <li>Peter Bialobrzeski — observación del cambio urbano</li>
+            <li>Alejandro Cartagena — paisaje social y urbano</li>
+            <li>Graciela Iturbide — identidad local y símbolos</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <!-- ==================== GALERÍA ==================== -->
+    <section class="gallery-section">
+      <h2>Galería del Proyecto</h2>
+      <p>Las seis piezas nacen de testimonios distintos y recuerdan que migrar no termina al llegar a un destino, es una experiencia que continúa marcando la vida, el cuerpo y la rutina. Con una metodología basada en referentes visuales y en la construcción retórica, estas narrativas independientes dialogan entre sí al colocarse juntas.</p>
+
+      <div class="gx-gallery">
+
+        <div class="gx-card">
+          <img src="IMG/pc1.1.png" class="gx-img">
+          <div class="gx-overlay">
+            <h3>Título 1</h3>
+            <p>Perla llegó desde Medellín con la intención de cruzar a Estados Unidos. No pudo completar el cruce y terminó quedándose en Juárez. Al principio compartía un departamento con otras tres personas y hacía arreglos de ropa para sus vecinos, donde la conocí por arreglarme unos pantalones. No era su plan, pero se acostumbró a la rutina y al silencio de la costura.</p>
+          </div>
+        </div>
+
+        <div class="gx-card">
+          <img src="IMG/2.png" class="gx-img">
+          <div class="gx-overlay">
+            <h3>Título 2</h3>
+            <p>Donaldo salió de San Pedro Sula buscando trabajo. Su plan era seguir hacia el norte, pero al llegar a Juárez se quedó sin dinero. Consiguió empleo temporal en una gasolinera y allí conoció a un señor que tenía un taller pequeño y necesitaba ayuda. Donaldo sabía lo básico de mecánica por haber trabajado con su tío, así que aceptó, donde mejoró y ahora atiende a sus propios clientes en el mismo taller.</p>
+          </div>
+        </div>
+
+        <div class="gx-card">
+          <img src="IMG/1.png" class="gx-img">
+          <div class="gx-overlay">
+            <h3>Título 3</h3>
+            <p>Rocío llegó de Durango pensando que en Juárez habría más trabajo. Pasó un año en maquilas hasta que se hartó de los turnos y renunció. Una vecina le pidió que le hiciera las uñas y, entre intentos y tutoriales, fue mejorando. Ahora trabaja en un salón a citas. Le gusta no tener un horario fijo, aunque detesta cuando llegan con uñas rotas solo para un retoque.</p>
+          </div>
+        </div>
+
+        <div class="gx-card">
+          <img src="IMG/AAAAAAAAAAAAAAAPOSTER5.png" class="gx-img">
+          <div class="gx-overlay">
+            <h3>Título 4</h3>
+            <p>Esteban llegó desde Guadalajara con la idea de tocar en el restaurante de un primo en El Paso por el verano, pero por problemas ya no pudo regresar. Para no perder el trabajo, terminó rentando un cuarto en Juárez y lleva dos años cruzando diario donde es auxiliar de cocina y toca en eventos del restaurante. A veces se frustra porque no era la vida que quería, aunque agradece seguir tocando.</p>
+          </div>
+        </div>
+
+        <div class="gx-card">
+          <img src="IMG/galeria2.png" class="gx-img">
+          <div class="gx-overlay">
+            <h3>Título 5</h3>
+            <p>Sofía vino porque una tía le ofreció un cuarto y un trabajo. El cuarto estaba bien, el trabajo no existía. Pasó tres meses en maquila hasta que un dentista buscó asistente sin experiencia, donde aprendió sorpesivamente rápido. El dentista es amable pero muy estricto. Sofía extraña el mar y la comida de su ciudad, pero ya le agarró gusto a su trabajo y a su nueva vida en la frontera.</p>
+          </div>
+        </div>
+
+        <div class="gx-card">
+          <img src="IMG/NewCanvas1.png" class="gx-img">
+          <div class="gx-overlay">
+            <h3>Título 6</h3>
+            <p>Un niño de 6 años dejó Mazatlán porque sus padres no encontraban trabajo y se mudaron a Ciudad Juárez. El cambio no fue fácil y él creció sintiéndose fuera de lugar, pero encontró en la creación visual una forma de expresar esos sentimientos. Hoy en dia sigue sintiendose perdido pero encuentra confort en escuchar y crear ya que el es el autor de esta galería.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <footer>
+      <div>© Sergio David Borrego Peraza — Proyecto...</div>
+    </footer>
+    
+  </div>
+</body>
+</html>
